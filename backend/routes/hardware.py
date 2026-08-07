@@ -243,8 +243,8 @@ def test_printer(address: Optional[str] = None, name: Optional[str] = None):
     try:
         with socket.create_connection((host, port), timeout=2):
             return {"success": True, "message": f"Conectado a {host}:{port}"}
-    except Exception as e:
-        return {"success": False, "message": str(e)}
+    except Exception:
+        return {"success": False, "message": "No se pudo conectar con la impresora."}
 
 
 @router.post("/test/validator")
@@ -260,8 +260,8 @@ def test_validator(device: Optional[str] = None):
         try:
             with socket.create_connection((host, 80), timeout=2):
                 return {"success": True, "message": f"Conectado a {host}:80"}
-        except Exception as e:
-            return {"success": False, "message": str(e)}
+        except Exception:
+            return {"success": False, "message": "No se pudo validar el dispositivo."}
 
     # For USB devices, backend cannot validate without specific drivers; return info
     return {"success": False, "message": "Validación de dispositivos USB no implementada en backend; prueba desde la estación POS (WebUSB/Serial)."}
@@ -323,5 +323,5 @@ def validate_device(payload: DeviceValidation):
             pass
 
         return {"success": True, "message": "Validación recibida en backend.", "device": device_repr}
-    except Exception as e:
-        return {"success": False, "message": str(e)}
+    except Exception:
+        return {"success": False, "message": "No se pudo procesar la validación del dispositivo."}

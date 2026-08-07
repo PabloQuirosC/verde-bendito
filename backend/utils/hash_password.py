@@ -18,11 +18,11 @@ if __name__ == "__main__":
     # Generar hash para la contraseña "admin123"
     password = "admin123"
     hashed = hash_password(password)
-    
-    print(f"Contraseña original: {password}")
+
+    print("Se ha generado un hash bcrypt para la contraseña de ejemplo.")
     print(f"Hash generado: {hashed}")
     print(f"\nVerificación: {verify_password(password, hashed)}")
-    
+
     print("\nEjemplos de INSERT para MySQL:")
     print(f"INSERT INTO usuarios (usuario, contraseña, correo_electronico, nombre_completo, status) VALUES")
     print(f"('admin', '{hashed}', 'admin@inmocr.com', 'Administrador', 'activo');")

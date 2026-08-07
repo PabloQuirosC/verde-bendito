@@ -21,13 +21,13 @@ class EmailService:
         self.smtp_password = os.getenv("SMTP_PASSWORD")
         self.smtp_from = os.getenv("SMTP_FROM")
         self.smtp_timeout = int(os.getenv("SMTP_TIMEOUT", "30"))
-        
-        print(f"[EMAIL] Inicializando EmailService:")
-        print(f"  SMTP_HOST: {self.smtp_host}")
-        print(f"  SMTP_PORT: {self.smtp_port}")
-        print(f"  SMTP_USER: {self.smtp_user}")
-        print(f"  SMTP_PASSWORD: {self.smtp_password[:10]}..." if self.smtp_password else "  SMTP_PASSWORD: None")
-        print(f"  SMTP_FROM: {self.smtp_from}")
+
+        print("[EMAIL] Inicializando EmailService")
+        print(f"  SMTP_HOST: {'configurado' if self.smtp_host else 'no configurado'}")
+        print(f"  SMTP_PORT: {'configurado' if self.smtp_port else 'no configurado'}")
+        print(f"  SMTP_USER: {'configurado' if self.smtp_user else 'no configurado'}")
+        print(f"  SMTP_PASSWORD: {'configurado' if self.smtp_password else 'no configurado'}")
+        print(f"  SMTP_FROM: {'configurado' if self.smtp_from else 'no configurado'}")
 
     def _generate_factura_pdf(self, factura_data: dict) -> BytesIO:
         """Genera un PDF profesional con la factura."""
@@ -205,7 +205,7 @@ class EmailService:
     def enviar_factura_por_email(self, email_cliente: str, factura_data: dict) -> bool:
         """Envía la factura por email con PDF adjunto."""
         if not email_cliente or not self.smtp_user or not self.smtp_password:
-            print(f"⚠️ Email o credenciales incompletas. Email: {email_cliente}, SMTP User: {self.smtp_user}")
+            print("⚠️ Email o credenciales incompletas")
             return False
         
         try:
@@ -253,8 +253,8 @@ class EmailService:
                     """
                 html_body = html_body.replace('{{ITEMS}}', items_html)
                 
-            except Exception as e:
-                print(f"⚠️ No se pudo cargar plantilla, usando texto plano: {e}")
+            except Exception:
+                print("⚠️ No se pudo cargar la plantilla; usando texto plano")
                 subtotal = float(factura_data.get('subtotal', 0))
                 impuesto = float(factura_data.get('impuesto', 0))
                 total = float(factura_data.get('total', subtotal + impuesto))
@@ -302,11 +302,11 @@ class EmailService:
                 server.login(self.smtp_user, self.smtp_password)
                 server.send_message(msg)
             
-            print(f"✅ Factura enviada a {email_cliente}")
+            print("✅ Factura enviada correctamente")
             return True
-            
-        except Exception as e:
-            print(f"❌ Error al enviar factura: {str(e)}")
+
+        except Exception:
+            print("❌ Error al enviar factura")
             return False
 
 # Instancia global

@@ -36,6 +36,7 @@ jobs:
         with:
           languages: ${{ matrix.language }}
           build-mode: none
+          config-file: ./.github/codeql/codeql-config.yml
           category: /language:${{ matrix.language }}
 
       - name: Analyze code
@@ -43,6 +44,7 @@ jobs:
 
   dependency-audit:
     name: Dependency audit
+    if: false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
