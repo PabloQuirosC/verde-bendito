@@ -96,11 +96,17 @@ def _validate_user_local(usuario: str, contrasena: str, country: str) -> Dict[st
     
     try:
         # Create a session for validation
-        user_db = os.getenv('MYSQL_USER_APP_PAS_SISTEMAS')
-        password_db = os.getenv('MYSQL_PASSWORD_APP_PAS_SISTEMAS')
-        host_db = os.getenv('MYSQL_HOST_APP_PAS_SISTEMAS')
-        port_db = os.getenv('MYSQL_PORT_APP_PAS_SISTEMAS')
-        database_db = os.getenv('MYSQL_SERVICE_APP_PAS_SISTEMAS')
+        def get_db_setting(name: str, fallback_name: str):
+            value = os.getenv(name)
+            if value:
+                return value
+            return os.getenv(fallback_name)
+
+        user_db = get_db_setting('MYSQL_USER_APP_PAS_SISTEMAS', 'MYSQL_USER_APP_PAS_COMANDAS')
+        password_db = get_db_setting('MYSQL_PASSWORD_APP_PAS_SISTEMAS', 'MYSQL_PASSWORD_APP_PAS_COMANDAS')
+        host_db = get_db_setting('MYSQL_HOST_APP_PAS_SISTEMAS', 'MYSQL_HOST_APP_PAS_COMANDAS')
+        port_db = get_db_setting('MYSQL_PORT_APP_PAS_SISTEMAS', 'MYSQL_PORT_APP_PAS_COMANDAS')
+        database_db = get_db_setting('MYSQL_SERVICE_APP_PAS_SISTEMAS', 'MYSQL_SERVICE_APP_PAS_COMANDAS')
         
         password_encoded = quote_plus(password_db)
         database_url = f'mysql+pymysql://{user_db}:{password_encoded}@{host_db}:{port_db}/{database_db}'

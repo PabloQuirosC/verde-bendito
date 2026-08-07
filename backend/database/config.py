@@ -10,11 +10,21 @@ class DatabaseConfig:
 
     def __init__(self, db_type: DatabaseType):
         prefix = db_type.value.upper()
-        self.user = os.getenv(f"MYSQL_USER_{prefix}")
-        self.password = os.getenv(f"MYSQL_PASSWORD_{prefix}")
-        self.host = os.getenv(f"MYSQL_HOST_{prefix}")
-        self.port = os.getenv(f"MYSQL_PORT_{prefix}")
-        self.service = os.getenv(f"MYSQL_SERVICE_{prefix}")
+        fallback_prefix = "APP_PAS_COMANDAS" if prefix == "APP_PAS_SISTEMAS" else None
+
+        def get_value(var_name: str):
+            value = os.getenv(var_name)
+            if value:
+                return value
+            if fallback_prefix:
+                return os.getenv(var_name.replace(prefix, fallback_prefix))
+            return value
+
+        self.user = get_value(f"MYSQL_USER_{prefix}")
+        self.password = get_value(f"MYSQL_PASSWORD_{prefix}")
+        self.host = get_value(f"MYSQL_HOST_{prefix}")
+        self.port = get_value(f"MYSQL_PORT_{prefix}")
+        self.service = get_value(f"MYSQL_SERVICE_{prefix}")
 
     @property
     def url(self) -> str:
