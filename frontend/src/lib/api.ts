@@ -4,14 +4,18 @@ const TOKEN_KEY = "auth_token";
 const LEGACY_TOKEN_KEY = "token";
 
 function getApiBase(): string {
-  // Construir dinámicamente: misma IP/host que la página, puerto 8000, ruta /api
-  if (typeof window !== "undefined") {
-    const protocol = window.location.protocol; // http: o https:
-    const host = window.location.hostname;     // 192.168.100.64 o localhost
-    const url = `${protocol}//${host}:8000/api`; // http://192.168.100.64:8000/api
-    return url;
+  const configuredBase = import.meta.env.VITE_API_BASE_URL?.trim();
+
+  if (configuredBase) {
+    return configuredBase.endsWith("/") ? `${configuredBase}api` : `${configuredBase}/api`;
   }
-  
+
+  if (typeof window !== "undefined") {
+    const protocol = window.location.protocol;
+    const host = window.location.hostname;
+    return `${protocol}//${host}:8000/api`;
+  }
+
   return "http://localhost:8000/api";
 }
 

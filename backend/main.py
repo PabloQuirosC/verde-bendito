@@ -124,10 +124,13 @@ app.include_router(main_router, prefix="/api")
 
 if __name__ == "__main__":
     import uvicorn
+    host = os.getenv("API_HOST", "0.0.0.0")
+    port = int(os.getenv("API_PORT", "8000"))
+    reload = os.getenv("API_RELOAD", "True").lower() == "true"
     uvicorn.run(
         "main:app",
-        host="0.0.0.0",  # Escuchar en todas las interfaces
-        port=8000,
-        reload=True
+        host=host,
+        port=port,
+        reload=reload,
     )
 
