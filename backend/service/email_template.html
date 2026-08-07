@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" lang="es">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <meta name="x-apple-disable-message-reformatting" />
+    <style>
+      body { background-color: rgb(255, 255, 255); font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif; }
+      table { border-collapse: collapse; }
+      .container { max-width: 600px; margin: 0 auto; }
+      .header { background-color: rgb(47, 82, 51); color: white; padding: 30px; text-align: center; border-radius: 8px 8px 0 0; }
+      .header h1 { margin: 0; font-size: 28px; }
+      .header p { margin: 5px 0 0 0; font-size: 14px; opacity: 0.9; }
+      .content { background-color: white; padding: 30px; border: 1px solid #eee; }
+      .invoice-info { background-color: #f9f9f9; padding: 15px; margin: 20px 0; border-radius: 5px; }
+      .invoice-info p { margin: 8px 0; font-size: 14px; }
+      .invoice-info strong { color: rgb(47, 82, 51); }
+      .items-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+      .items-table th { background-color: rgb(47, 82, 51); color: white; padding: 12px; text-align: left; font-weight: bold; }
+      .items-table td { padding: 12px; border-bottom: 1px solid #eee; }
+      .items-table tr:nth-child(even) { background-color: #f9f9f9; }
+      .totals { margin: 20px 0; text-align: right; }
+      .total-row { display: flex; justify-content: space-between; margin: 8px 0; font-size: 14px; }
+      .total-row.grand-total { background-color: rgb(47, 82, 51); color: white; padding: 12px; margin: 12px 0; border-radius: 5px; font-size: 16px; font-weight: bold; }
+      .thank-you { text-align: center; margin: 30px 0; }
+      .thank-you h2 { color: rgb(47, 82, 51); font-size: 20px; margin: 0 0 10px 0; }
+      .thank-you p { color: rgb(100, 100, 100); font-size: 14px; margin: 5px 0; }
+      .divider { border: none; border-top: 2px solid rgb(47, 82, 51); margin: 20px 0; }
+      .footer { background-color: #f5f5f5; padding: 20px; text-align: center; border-radius: 0 0 8px 8px; font-size: 12px; color: rgb(150, 150, 150); }
+      .auto-reply-notice { background-color: #fff3cd; border: 1px solid #ffc107; border-radius: 5px; padding: 12px; margin: 20px 0; text-align: center; font-size: 12px; color: rgb(86, 67, 0); }
+      .auto-reply-notice strong { display: block; margin-bottom: 5px; color: rgb(56, 44, 0); }
+      .contact-info { margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee; font-size: 12px; color: rgb(120, 120, 120); }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <div class="header">
+        <h1>🌿 VERDE BENDITO</h1>
+        <p>Restaurante • Bar • Café</p>
+      </div>
+
+      <!-- Main Content -->
+      <div class="content">
+        <!-- Greeting -->
+        <p style="font-size: 16px; margin-bottom: 20px;">Estimado Cliente,</p>
+
+        <p style="font-size: 14px; line-height: 1.6; margin-bottom: 20px;">
+          Agradecemos sinceramente tu compra en <strong>Verde Bendito</strong>. Tu factura se encuentra adjunta en formato PDF para tu referencia y registro.
+        </p>
+
+        <!-- Invoice Info -->
+        <div class="invoice-info">
+          <p><strong>Número de Factura:</strong> {{INVOICE_NUMBER}}</p>
+          <p><strong>Fecha:</strong> {{DATE}}</p>
+          <p><strong>Total a Pagar:</strong> {{TOTAL}}</p>
+        </div>
+
+        <!-- Items Table -->
+        <table class="items-table">
+          <thead>
+            <tr>
+              <th style="width: 50%;">Producto</th>
+              <th style="width: 15%; text-align: right;">Cantidad</th>
+              <th style="width: 20%; text-align: right;">Unitario</th>
+              <th style="width: 15%; text-align: right;">Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{ITEMS}}
+          </tbody>
+        </table>
+
+        <!-- Totals -->
+        <div class="totals">
+          <div class="total-row">
+            <span>Subtotal:</span>
+            <span>{{SUBTOTAL}}</span>
+          </div>
+          <div class="total-row">
+            <span>Impuesto (13%):</span>
+            <span>{{IMPUESTO}}</span>
+          </div>
+          <div class="total-row grand-total">
+            <span>TOTAL:</span>
+            <span>{{TOTAL}}</span>
+          </div>
+        </div>
+
+        <!-- Thank You Section -->
+        <div class="thank-you">
+          <h2>¡Gracias por tu confianza! 🌿</h2>
+          <p>Esperamos verte pronto nuevamente en nuestro restaurante.</p>
+        </div>
+
+        <!-- Auto-Reply Notice -->
+        <div class="auto-reply-notice">
+          <strong>⚠️ Mensaje Automático</strong>
+          Este es un correo electrónico generado automáticamente. Por favor, <strong>no respondas</strong> a este mensaje. Si tienes alguna consulta, contáctanos directamente.
+        </div>
+
+        <!-- Footer -->
+        <div class="contact-info">
+          <p><strong>Verde Bendito</strong></p>
+          <p>Restaurante • Bar • Café</p>
+          <p style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #eee;">
+            Esta es una factura electrónica. Se emite automáticamente al completar la transacción.
+          </p>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p>&copy; 2026 Verde Bendito. Todos los derechos reservados.</p>
+        <p>Este correo fue enviado desde nuestro sistema de facturación electrónica.</p>
+      </div>
+    </div>
+  </body>
+</html>

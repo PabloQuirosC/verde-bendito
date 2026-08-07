@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Verde Bendito · POS móvil
+   Paleta natural: verdes profundos, beige cálido, tierra.
+   Todos los colores en HSL. */
+
+@layer base {
+  :root {
+    --background: 40 33% 97%;            /* beige claro */
+    --foreground: 130 18% 12%;           /* verde casi negro */
+
+    --card: 0 0% 100%;
+    --card-foreground: 130 18% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 130 18% 12%;
+
+    --primary: 145 45% 24%;              /* verde bendito */
+    --primary-foreground: 40 40% 97%;
+    --primary-glow: 142 52% 38%;
+
+    --secondary: 38 30% 92%;             /* beige */
+    --secondary-foreground: 130 18% 18%;
+
+    --muted: 38 25% 94%;
+    --muted-foreground: 30 8% 42%;
+
+    --accent: 28 55% 55%;                /* terracota / tierra */
+    --accent-foreground: 40 40% 97%;
+
+    --warm: 38 70% 60%;                  /* mostaza cálida */
+    --warm-foreground: 30 30% 15%;
+
+    --success: 142 55% 35%;
+    --success-foreground: 40 40% 97%;
+
+    --warning: 35 85% 55%;
+    --warning-foreground: 30 30% 15%;
+
+    --destructive: 6 65% 48%;
+    --destructive-foreground: 40 40% 97%;
+
+    --border: 38 18% 86%;
+    --input: 38 18% 88%;
+    --ring: 145 45% 24%;
+
+    --radius: 1rem;
+
+    /* Surfaces */
+    --surface: 40 33% 97%;
+    --surface-elevated: 0 0% 100%;
+    --surface-deep: 130 22% 10%;
+    --surface-deep-foreground: 40 30% 92%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(145 45% 24%), hsl(142 52% 38%));
+    --gradient-warm: linear-gradient(135deg, hsl(38 55% 88%), hsl(40 33% 97%));
+    --gradient-deep: linear-gradient(160deg, hsl(145 35% 18%), hsl(130 30% 12%));
+
+    /* Shadows */
+    --shadow-soft: 0 1px 2px hsl(130 20% 15% / 0.04), 0 4px 16px hsl(130 20% 15% / 0.05);
+    --shadow-card: 0 2px 8px hsl(130 20% 15% / 0.06), 0 8px 24px hsl(130 20% 15% / 0.04);
+    --shadow-float: 0 12px 32px hsl(145 45% 24% / 0.18);
+
+    /* Sidebar */
+    --sidebar-background: 130 22% 10%;
+    --sidebar-foreground: 40 30% 92%;
+    --sidebar-primary: 142 52% 45%;
+    --sidebar-primary-foreground: 40 40% 97%;
+    --sidebar-accent: 130 18% 16%;
+    --sidebar-accent-foreground: 40 30% 92%;
+    --sidebar-border: 130 15% 18%;
+    --sidebar-ring: 142 52% 45%;
+  }
+
+  .dark {
+    --background: 130 22% 8%;
+    --foreground: 40 30% 94%;
+    --card: 130 22% 11%;
+    --card-foreground: 40 30% 94%;
+    --popover: 130 22% 11%;
+    --popover-foreground: 40 30% 94%;
+    --primary: 142 52% 48%;
+    --primary-foreground: 130 30% 8%;
+    --primary-glow: 142 60% 60%;
+    --secondary: 130 18% 16%;
+    --secondary-foreground: 40 30% 94%;
+    --muted: 130 18% 14%;
+    --muted-foreground: 38 12% 65%;
+    --accent: 28 55% 55%;
+    --accent-foreground: 40 30% 94%;
+    --destructive: 6 60% 50%;
+    --destructive-foreground: 40 30% 94%;
+    --border: 130 15% 18%;
+    --input: 130 15% 18%;
+    --ring: 142 52% 48%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html, body, #root { @apply h-full; }
+  /* Evitar efecto elástico / overscroll bounce en navegadores modernos */
+  html, body, #root { overscroll-behavior-y: none; }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+}
+
+@layer components {
+  .app-shell {
+    @apply mx-auto w-full min-h-screen bg-background overscroll-none;
+    max-width: 100%;
+  }
+  .mobile-frame {
+    @apply mx-auto w-full;
+    max-width: 480px;
+  }
+  .scroll-x {
+    @apply flex gap-2 overflow-x-auto pb-2;
+    scrollbar-width: none;
+  }
+  .scroll-x::-webkit-scrollbar { display: none; }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium whitespace-nowrap transition-colors;
+  }
+
+  .stat-card {
+    @apply rounded-2xl bg-card p-4 shadow-[var(--shadow-soft)] border border-border/60;
+  }
+}
+
+/* Autofill overrides: evita que el navegador ponga fondo blanco al autocompletar
+   y mantiene el color del texto y el estilo del input. */
+@layer base {
+  input:-webkit-autofill,
+  textarea:-webkit-autofill,
+  select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px rgba(255,255,255,0.65) inset !important;
+    box-shadow: 0 0 0px 1000px rgba(255,255,255,0.65) inset !important;
+    -webkit-text-fill-color: rgba(0,0,0,0.95) !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+  }
+
+  input:-webkit-autofill::first-line,
+  textarea:-webkit-autofill::first-line,
+  select:-webkit-autofill::first-line {
+    color: rgba(0,0,0,0.95) !important;
+  }
+}

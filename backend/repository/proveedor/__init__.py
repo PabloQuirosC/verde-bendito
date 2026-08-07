@@ -1,0 +1,1 @@
+from .proveedor_repository import ProveedorRepository

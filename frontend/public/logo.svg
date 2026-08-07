@@ -1,0 +1,152 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(512 416) rotate(90) scale(660)">
+      <stop stop-color="#FFFDF4" />
+      <stop offset="1" stop-color="#F2EAD2" />
+    </radialGradient>
+    <radialGradient id="orb" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(512 230) rotate(90) scale(118)">
+      <stop stop-color="#E9FFAA" />
+      <stop offset="1" stop-color="#7FDA3D" />
+    </radialGradient>
+    <radialGradient id="orbCore" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(512 230) rotate(90) scale(58)">
+      <stop stop-color="#F8FFD8" />
+      <stop offset="1" stop-color="#E3FF6E" />
+    </radialGradient>
+    <linearGradient id="leafDark" x1="212" y1="198" x2="812" y2="480" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2C6B31" />
+      <stop offset="1" stop-color="#173F23" />
+    </linearGradient>
+    <linearGradient id="leafLight" x1="272" y1="196" x2="752" y2="474" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7DBD45" />
+      <stop offset="1" stop-color="#3F7E2C" />
+    </linearGradient>
+    <linearGradient id="wood" x1="340" y1="640" x2="684" y2="640" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8F5C35" />
+      <stop offset="1" stop-color="#4E2D19" />
+    </linearGradient>
+    <linearGradient id="grillTop" x1="356" y1="512" x2="668" y2="600" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F4BE5D" />
+      <stop offset="1" stop-color="#B86A23" />
+    </linearGradient>
+    <linearGradient id="ribbon" x1="196" y1="824" x2="828" y2="824" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D0A35D" />
+      <stop offset="1" stop-color="#9A6630" />
+    </linearGradient>
+    <path id="titleArc" d="M 220 396 C 326 294 430 244 512 244 C 594 244 698 294 804 396" />
+    <path id="subtitleArc" d="M 264 840 C 350 790 430 770 512 770 C 594 770 674 790 760 840" />
+    <path id="ribbonTop" d="M 252 812 C 340 768 424 748 512 748 C 600 748 684 768 772 812" />
+  </defs>
+
+  <rect width="1024" height="1024" rx="84" fill="url(#bg)" />
+
+  <!-- Upper botanical crown -->
+  <g opacity="0.98">
+    <path d="M511 126C500 148 490 168 476 186C490 186 501 183 511 176C521 183 532 186 546 186C532 168 522 148 511 126Z" fill="#98E65A" />
+    <circle cx="512" cy="232" r="116" fill="url(#orb)" opacity="0.95" />
+    <circle cx="512" cy="232" r="66" fill="url(#orbCore)" opacity="0.95" />
+    <circle cx="512" cy="232" r="38" fill="#F8FFD8" opacity="0.84" />
+  </g>
+
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M325 214C284 228 252 252 226 286C260 286 295 279 324 268" stroke="url(#leafLight)" stroke-width="30" />
+    <path d="M699 214C740 228 772 252 798 286C764 286 729 279 700 268" stroke="url(#leafLight)" stroke-width="30" />
+    <path d="M286 286C244 312 214 348 198 392C230 386 264 372 296 352" stroke="url(#leafDark)" stroke-width="24" />
+    <path d="M738 286C780 312 810 348 826 392C794 386 760 372 728 352" stroke="url(#leafDark)" stroke-width="24" />
+    <path d="M252 352C214 384 188 424 176 470C210 462 244 446 278 422" stroke="#4A8B31" stroke-width="20" />
+    <path d="M772 352C810 384 836 424 848 470C814 462 780 446 746 422" stroke="#4A8B31" stroke-width="20" />
+  </g>
+
+  <!-- Leaf clusters -->
+  <g>
+    <g transform="translate(0 0)">
+      <path d="M280 208C252 184 226 170 196 164C204 194 218 220 240 244C260 234 272 224 280 208Z" fill="#5B9B38" />
+      <path d="M312 234C288 206 260 190 226 186C236 214 252 238 276 258C292 250 304 244 312 234Z" fill="#7EC44A" />
+      <path d="M334 264C314 242 288 230 256 226C268 252 286 274 310 292C322 286 330 276 334 264Z" fill="#3F7F2D" />
+      <path d="M742 208C770 184 796 170 826 164C818 194 804 220 782 244C762 234 750 224 742 208Z" fill="#5B9B38" />
+      <path d="M710 234C734 206 762 190 796 186C786 214 770 238 746 258C730 250 718 244 710 234Z" fill="#7EC44A" />
+      <path d="M688 264C708 242 734 230 766 226C754 252 736 274 712 292C700 286 692 276 688 264Z" fill="#3F7F2D" />
+    </g>
+
+    <g>
+      <path d="M312 168C278 156 256 142 238 120C264 116 292 120 320 130C320 144 316 158 312 168Z" fill="#487F2C" />
+      <path d="M712 168C746 156 768 142 786 120C760 116 732 120 704 130C704 144 708 158 712 168Z" fill="#487F2C" />
+      <path d="M366 160C340 132 324 108 320 78C346 92 368 112 386 138C378 148 372 156 366 160Z" fill="#5B9B38" />
+      <path d="M658 160C684 132 700 108 704 78C678 92 656 112 638 138C646 148 652 156 658 160Z" fill="#5B9B38" />
+      <path d="M446 150C432 122 428 96 432 72C452 88 470 110 482 136C472 142 460 148 446 150Z" fill="#6DBA42" />
+      <path d="M578 150C592 122 596 96 592 72C572 88 554 110 542 136C552 142 564 148 578 150Z" fill="#6DBA42" />
+    </g>
+
+    <!-- Berries and small details -->
+    <g fill="#B86A34">
+      <circle cx="700" cy="244" r="8" />
+      <circle cx="720" cy="252" r="8" />
+      <circle cx="690" cy="262" r="8" />
+      <circle cx="708" cy="270" r="8" />
+      <circle cx="324" cy="244" r="8" />
+      <circle cx="304" cy="252" r="8" />
+      <circle cx="334" cy="262" r="8" />
+      <circle cx="316" cy="270" r="8" />
+    </g>
+  </g>
+
+  <!-- Hand and glow base -->
+  <g>
+    <path d="M410 344C444 320 478 308 512 308C546 308 580 320 614 344C632 356 646 372 656 392C626 402 606 406 590 402C568 396 542 378 512 376C482 378 456 396 434 402C418 406 398 402 368 392C378 372 392 356 410 344Z" fill="#C99A6B" />
+    <path d="M410 344C442 326 476 316 512 316C548 316 582 326 614 344" stroke="#84552D" stroke-width="6" stroke-linecap="round" opacity="0.65" />
+    <path d="M470 360C492 350 504 344 512 340C520 344 532 350 554 360" stroke="#84552D" stroke-width="5" stroke-linecap="round" opacity="0.45" />
+    <path d="M423 356C438 362 455 368 474 372" stroke="#84552D" stroke-width="5" stroke-linecap="round" opacity="0.35" />
+    <path d="M601 356C586 362 569 368 550 372" stroke="#84552D" stroke-width="5" stroke-linecap="round" opacity="0.35" />
+  </g>
+
+  <!-- Title -->
+  <g>
+    <text font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="98" fill="#184622" letter-spacing="2">
+      <textPath href="#titleArc" startOffset="50%" text-anchor="middle">VERDE BENDITO</textPath>
+    </text>
+  </g>
+
+  <!-- Grill -->
+  <g>
+    <ellipse cx="512" cy="610" rx="174" ry="42" fill="#2E1C12" opacity="0.9" />
+    <ellipse cx="512" cy="602" rx="172" ry="52" fill="url(#wood)" />
+    <ellipse cx="512" cy="590" rx="150" ry="34" fill="url(#grillTop)" />
+    <ellipse cx="512" cy="590" rx="168" ry="50" stroke="#432414" stroke-width="12" />
+    <path d="M356 590H668" stroke="#5B351B" stroke-width="16" stroke-linecap="round" />
+    <path d="M378 568H646" stroke="#F8C45D" stroke-width="10" stroke-linecap="round" opacity="0.8" />
+    <path d="M403 550H621" stroke="#F8C45D" stroke-width="8" stroke-linecap="round" opacity="0.5" />
+
+    <circle cx="444" cy="572" r="28" fill="#C86B22" />
+    <circle cx="512" cy="556" r="30" fill="#E08124" />
+    <circle cx="580" cy="572" r="28" fill="#C86B22" />
+    <path d="M426 572C426 555 436 544 450 544C464 544 474 555 474 572" stroke="#7B3D15" stroke-width="5" />
+    <path d="M494 556C494 539 504 528 518 528C532 528 542 539 542 556" stroke="#7B3D15" stroke-width="5" />
+    <path d="M562 572C562 555 572 544 586 544C600 544 610 555 610 572" stroke="#7B3D15" stroke-width="5" />
+
+    <path d="M456 500C456 482 462 468 472 454" stroke="#D88A52" stroke-width="7" stroke-linecap="round" />
+    <path d="M512 492C512 472 520 456 534 442" stroke="#D88A52" stroke-width="7" stroke-linecap="round" />
+    <path d="M568 500C568 482 562 468 552 454" stroke="#D88A52" stroke-width="7" stroke-linecap="round" />
+    <path d="M488 504C488 490 492 480 500 470" stroke="#E7A15E" stroke-width="5" stroke-linecap="round" opacity="0.8" />
+    <path d="M536 504C536 490 532 480 524 470" stroke="#E7A15E" stroke-width="5" stroke-linecap="round" opacity="0.8" />
+
+    <path d="M468 650C468 664 476 682 490 700" stroke="#A56A3D" stroke-width="10" stroke-linecap="round" />
+    <path d="M556 650C556 664 548 682 534 700" stroke="#A56A3D" stroke-width="10" stroke-linecap="round" />
+    <path d="M512 656C512 678 512 694 512 710" stroke="#A56A3D" stroke-width="10" stroke-linecap="round" />
+  </g>
+
+  <!-- Ribbon -->
+  <g>
+    <path d="M224 820C314 770 404 748 512 748C620 748 710 770 800 820L760 872C676 850 598 840 512 840C426 840 348 850 264 872L224 820Z" fill="url(#ribbon)" />
+    <path d="M242 824L188 786L232 782L268 814L242 824Z" fill="#9A6630" />
+    <path d="M782 824L836 786L792 782L756 814L782 824Z" fill="#9A6630" />
+    <path d="M284 826C372 798 442 786 512 786C582 786 652 798 740 826" stroke="#E7C47D" stroke-width="8" opacity="0.55" />
+    <text font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="36" fill="#184622" letter-spacing="2">
+      <textPath href="#ribbonTop" startOffset="50%" text-anchor="middle">COCINA NATURAL Y PARRILLA</textPath>
+    </text>
+  </g>
+
+  <!-- Bottom country text -->
+  <g>
+    <path d="M412 928C446 916 478 910 512 910C546 910 578 916 612 928" stroke="#184622" stroke-width="0" />
+    <text x="512" y="942" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="700" fill="#184622" letter-spacing="6">COSTA RICA</text>
+  </g>
+</svg>
