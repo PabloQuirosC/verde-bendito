@@ -16,7 +16,7 @@ oracledb==3.4.1
 orm==0.3.1
 pycparser==2.23
 python-dotenv==1.2.1
-python-jose[cryptography]==3.3.0
+python-jose[cryptography]==3.5.0
 SQLAlchemy==2.0.45
 typesystem==0.3.1
 typing_extensions==4.15.0
