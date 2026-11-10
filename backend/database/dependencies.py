@@ -4,13 +4,13 @@ from .enums import DatabaseType
 from .manager import DatabaseManager
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
-from jose import jwt, JWTError
+import jwt
 import os
 import logging
 
 # Configuración JWT
 JWT_SECRET = os.getenv("SECRET_KEY")
-JWT_ALGORITHM = os.getenv("ALGORITHM", "HS256")
+JWT_ALGORITHM = "HS256"
 
 # Esquema de seguridad Bearer
 security = HTTPBearer()
@@ -69,7 +69,7 @@ def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(securit
         
         return payload
         
-    except JWTError as e:
+    except jwt.InvalidTokenError as e:
         logging.warning(f"Error al decodificar JWT: {str(e)}")
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,

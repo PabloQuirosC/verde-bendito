@@ -7,14 +7,14 @@ from datetime import datetime, timedelta
 import time
 from collections import defaultdict
 from fastapi import Header, HTTPException
-from jose import jwt
+import jwt
 from typing import Dict, Any
 import pandas as pd
 
 # Cargar variables de entorno
 load_dotenv()
 jwt_secret = os.getenv("SECRET_KEY")
-algorithm = os.getenv("ALGORITHM")
+algorithm = "HS256"
 
 # Configurar logging (solo consola)
 logging.basicConfig(

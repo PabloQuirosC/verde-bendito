@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from fastapi import HTTPException
 import requests
 import os
-from jose import jwt
+import jwt
 import logging
 from typing import Dict, Any
 from datetime import datetime, timedelta
@@ -31,7 +31,7 @@ logger = logging.getLogger(__name__)
 AUTH_API_URL = os.getenv("AUTH_API_URL")
 AUTH_COUNTRY = os.getenv("AUTH_COUNTRY")
 JWT_SECRET = os.getenv("SECRET_KEY")
-JWT_ALGORITHM = os.getenv("ALGORITHM", "HS256")
+JWT_ALGORITHM = "HS256"
 JWT_EXP_MINUTES = int(os.getenv("JWT_EXP_MINUTES", 60))
 
 

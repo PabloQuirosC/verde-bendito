@@ -4,7 +4,7 @@ from starlette.middleware.base import BaseHTTPMiddleware
 from database.manager import DatabaseManager
 from database.enums import DatabaseType
 from utils.auditoria_utils import log_auditoria
-from jose import jwt
+import jwt
 import traceback
 import os
 from dotenv import load_dotenv
@@ -43,7 +43,7 @@ class AuditoriaMiddleware(BaseHTTPMiddleware):
             if auth_header and auth_header.lower().startswith('bearer '):
                 token = auth_header.split(' ', 1)[1].strip()
                 try:
-                    payload = jwt.decode(token, os.getenv('SECRET_KEY', ''), algorithms=[os.getenv('ALGORITHM', 'HS256')])
+                    payload = jwt.decode(token, os.getenv('SECRET_KEY', ''), algorithms=['HS256'])
                     usuario_id = payload.get('user_id')
                     nombre_usuario = payload.get('sub') or payload.get('username')
                 except Exception:
@@ -133,4 +133,3 @@ if __name__ == "__main__":
         port=port,
         reload=reload,
     )
-

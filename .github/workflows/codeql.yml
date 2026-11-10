@@ -44,7 +44,6 @@ jobs:
 
   dependency-audit:
     name: Dependency audit
-    if: false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -72,4 +71,4 @@ jobs:
 
       - name: Audit frontend dependencies
         working-directory: frontend
-        run: bun audit
+        run: bun pm scan

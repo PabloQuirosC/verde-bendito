@@ -8,7 +8,7 @@ from schemas.operaciones_schemas import (
 from notifications.manager import manager as notifications_manager
 from models.comanda import Comanda
 from utils.auditoria_utils import log_auditoria
-from jose import jwt
+import jwt
 import os
 
 comanda_router = APIRouter()
@@ -44,7 +44,7 @@ def crear_comanda(
             if auth_header and auth_header.lower().startswith('bearer '):
                 token = auth_header.split(' ', 1)[1].strip()
                 try:
-                    payload = jwt.decode(token, os.getenv('SECRET_KEY', ''), algorithms=[os.getenv('ALGORITHM', 'HS256')])
+                    payload = jwt.decode(token, os.getenv('SECRET_KEY', ''), algorithms=['HS256'])
                     uid = payload.get('user_id') or payload.get('user_id')
                     if uid:
                         comanda.usuario_mesero_id = int(uid)
@@ -63,7 +63,7 @@ def crear_comanda(
         if auth_header and auth_header.lower().startswith('bearer '):
             token = auth_header.split(' ', 1)[1].strip()
             try:
-                payload = jwt.decode(token, os.getenv('SECRET_KEY', ''), algorithms=[os.getenv('ALGORITHM', 'HS256')])
+                payload = jwt.decode(token, os.getenv('SECRET_KEY', ''), algorithms=['HS256'])
                 usuario_id = payload.get('user_id') or payload.get('user_id')
                 nombre_usuario = payload.get('sub') or payload.get('username')
             except Exception:
@@ -191,7 +191,7 @@ async def agregar_item_comanda(
         if auth_header and auth_header.lower().startswith('bearer '):
             token = auth_header.split(' ', 1)[1].strip()
             try:
-                payload = jwt.decode(token, os.getenv('SECRET_KEY', ''), algorithms=[os.getenv('ALGORITHM', 'HS256')])
+                payload = jwt.decode(token, os.getenv('SECRET_KEY', ''), algorithms=['HS256'])
                 usuario_id = payload.get('user_id') or payload.get('user_id')
                 nombre_usuario = payload.get('sub') or payload.get('username')
             except Exception:
@@ -238,7 +238,7 @@ def cerrar_comanda(
         if auth_header and auth_header.lower().startswith('bearer '):
             token = auth_header.split(' ', 1)[1].strip()
             try:
-                payload = jwt.decode(token, os.getenv('SECRET_KEY', ''), algorithms=[os.getenv('ALGORITHM', 'HS256')])
+                payload = jwt.decode(token, os.getenv('SECRET_KEY', ''), algorithms=['HS256'])
                 usuario_id = payload.get('user_id') or payload.get('user_id')
                 nombre_usuario = payload.get('sub') or payload.get('username')
             except Exception:

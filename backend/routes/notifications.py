@@ -1,7 +1,7 @@
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect, Body, Depends
 from typing import Dict
 from notifications.manager import manager
-from jose import jwt, JWTError
+import jwt
 import os
 import logging
 from utils.utils import validate_token
@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 # JWT config (same env vars as dependencies)
 JWT_SECRET = os.getenv("SECRET_KEY")
-JWT_ALGORITHM = os.getenv("ALGORITHM", "HS256")
+JWT_ALGORITHM = "HS256"
 
 router = APIRouter()
 
@@ -29,7 +29,7 @@ async def websocket_endpoint(websocket: WebSocket, topic: str):
             payload = jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALGORITHM])
             user_id = payload.get("user_id")
             logger.info(f"[WS] Token válido, user_id={user_id}")
-        except JWTError as e:
+        except jwt.InvalidTokenError as e:
             logger.warning(f"[WS] Token inválido: {e}")
             user_id = None
     else:
