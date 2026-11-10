@@ -71,4 +71,4 @@ jobs:
 
       - name: Audit frontend dependencies
         working-directory: frontend
-        run: bun pm scan
+        run: npm audit --audit-level=moderate
